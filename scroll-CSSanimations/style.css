@@ -1,0 +1,117 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+.scroll-watcher{
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 20px;
+    
+    scale: 0 1;
+    transform-origin: left;
+    animation: scroll-watcher linear;
+    animation-timeline: scroll();
+    /* 
+    animation-timeline: scroll() 
+        0%: al cargar
+        va incrementando a medida que hacemos scroll
+        100%: al final de todo 
+    */
+    background-color: green;
+    z-index: 1;
+}
+
+@keyframes scroll-watcher {
+    to{
+        scale: 1 1;
+    }
+}
+
+.hero h1, .hero p{
+    position: absolute;
+    top: 300px;
+    z-index: 1;
+    color: white;
+    animation: fade-out linear;
+    animation-timeline: view();
+    animation-range: exit -200px;
+}
+
+.hero p{
+    margin-top: 100px;
+}
+
+.hero img{
+    height: 100vh;
+    width: 100vw;
+    color: white;
+
+    transform-origin: bottom;
+
+    animation: header-img-animation linear forwards;
+    animation-timeline: view();
+    animation-range: exit;
+
+}
+
+
+
+.hero h1, .hero p {
+    margin-left: 20px;
+}
+
+@keyframes fade-out {
+    to {opacity: 0;}
+}
+
+@keyframes header-img-animation {
+    25% {opacity: 1;}
+    85%, 100%{
+        opacity: 1;
+        scale: 3;
+    }
+}
+
+section{
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+}
+
+article{
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    max-width: 800px;
+}
+
+.img{
+    width: 700px;
+    height: 500px;
+    margin: 0 auto;
+    scale: 0.8;
+    opacity: 0;
+    object-fit: cover;
+    background-repeat: no-repeat;
+    animation: fade-in linear forwards;
+    animation-timeline: view();
+    animation-range: 50px 80vh;
+    /* 
+    animation-timeline: view(offset de la animación) 
+        0%: al entrar el elemento (en este caso img) en el viewport
+        va incrementando a medida que hacemos scroll
+        100%: al salir del viewport
+    */
+    /* animation-range-start: 10px;
+    animation-range-end: contain; */
+}
+
+@keyframes fade-in {
+    to{
+        scale: 1;
+        opacity: 1;
+    }
+    
+}
